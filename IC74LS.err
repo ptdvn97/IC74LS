@@ -1,0 +1,4 @@
+>>> Warning 203 "IC74LS.c" Line 190(1,1): Condition always TRUE
+      Memory usage:   ROM=6%      RAM=3% - 5%
+      0 Errors,  1 Warnings.
+Build Successful.

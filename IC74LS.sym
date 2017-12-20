@@ -1,0 +1,84 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     i
+021     MAIN.i
+022-025 MAIN.data
+026     Tachso.So
+026-027 Hienthi.data
+027-028 Tachso.data
+028     Hienthi.time
+029-02A Quetled.data
+029     Tachso.@SCRATCH1
+02A     Tachso.@SCRATCH2
+02B     Quetled.i
+02B     @DIV88.P1
+02C     @delay_ms1.P1
+02C     @DIV88.P2
+02C     Quetled.@SCRATCH1
+02D     Quetcot.number
+02D     NhapData.Dulieu
+02D     @DIV88.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @DIV88
+000019  Tachso
+000064  @delay_ms1
+000078  NhapData
+00012A  @goto10675
+000138  Quetcot
+000193  @goto10596
+00019C  Hienthi
+0001A9  Quetled
+0001C8  MAIN
+0001C8  @cinit1
+0001D2  @cinit2
+
+Project Directory:
+    C:\Users\Dung Phan\Documents\
+
+Project Files:
+    IC74LS.c                                                [23-Sep-17 01:02  CRC=CD1546B2]
+    IC74LS.h                                                [22-Sep-17 23:10  CRC=CF12E969]
+    ..\..\..\Program Files (x86)\PICC\Devices\16F877A.h     [12-Nov-13 14:35  CRC=81334808]
+
+Source signature=9E8EC02B
+
+Units:
+    IC74LS (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   IC74LS.xsym
+    Errors:      IC74LS.err
+    Ext Symbols: IC74LS.esym
+    INHX8:       IC74LS.hex
+    Symbols:     IC74LS.sym
+    List:        IC74LS.lst
+    Debug/COFF:  IC74LS.cof
+    Project:     IC74LS.ccspjt
+    Call Tree:   IC74LS.tre
+    Statistics:  IC74LS.STA

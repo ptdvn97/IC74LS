@@ -1,0 +1,21 @@
+ÀÄIC74LS
+   ÀÄMAIN  0/37  Ram=5
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄTachso  0/75  Ram=5
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÀÄ@DIV88  0/21  Ram=3
+      ÀÄHienthi  0/44  Ram=3
+         ÃÄ@delay_ms1  0/20  Ram=1
+         ÀÄQuetled  (Inline)  Ram=4
+            ÃÄNhapData  0/178  Ram=1
+            ³  ÀÄ@goto10675  0/14  Ram=0
+            ÃÄQuetcot  0/91  Ram=1
+            ³  ÀÄ@goto10596  0/9  Ram=0
+            ÃÄ@delay_ms1  0/20  Ram=1
+            ÀÄQuetcot  0/91  Ram=1
+               ÀÄ*

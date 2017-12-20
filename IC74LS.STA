@@ -1,0 +1,57 @@
+
+ROM used:   493/8192 (6%)
+            493/8192 (6%) including unused fragments
+
+            0.6 Average locations per line
+            4.3 Average locations per statement
+
+RAM used:   11/368 (3%) at main() level
+            19/368 (5%) worst case
+
+Stack used: 1 worst case (1 in main + 0 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  198   116 100  IC74LS.c
+   10     0   0  IC74LS.h
+  671     0   0  ..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+----- -----
+  879   116 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     20   4    1             @delay_ms1
+0     91  18    1    993  3.9  Quetcot
+0      9   2    0             @goto10596
+0    178  36    1   2205  3.9  NhapData
+0     14   3    0             @goto10675
+0     75  15    5    307  3.7  Tachso
+0     21   4    3             @DIV88
+ Inline         4    199  4.3  Quetled
+0     44   9    3    128  3.9  Hienthi
+0     37   8    5    242  4.6  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               6
+    Statements              116
+    Comments                119
+    Volume (V)              5420
+    Difficulty (D)          24.6
+    Effort to implement (E) 133376
+    Time to implement (T)   2 hours, 3 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   17
+    Maintainability (MI)    116
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF   489  1555  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

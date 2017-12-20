@@ -1,0 +1,23 @@
+[PROJECT]
+Target=IC74LS.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.025
+Compiler=PCM
+CCSVersion=5.025
+[Target Data]
+FileList=IC74LS.c
+[Directories]
+Include=
+[C:\Users\Dung Phan\Documents\IC74LS]
+Type=4
+[mru-list]
+1=IC74LS.c
+[Opened Files]
+1=IC74LS.c
+2=
+3=
+[IC74LS.c]
+Type=4
+[Units]
+Count=1
+1=IC74LS (main)

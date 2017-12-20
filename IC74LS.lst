@@ -1,0 +1,738 @@
+CCS PCM C Compiler, Version 5.025, 5967               23-Sep-17 01:02
+
+               Filename:   C:\Users\Dung Phan\Documents\IC74LS.lst
+
+               ROM used:   493 words (6%)
+                           Largest free fragment is 2048
+               RAM used:   11 (3%) at main() level
+                           19 (5%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  01
+0001:  MOVWF  0A
+0002:  GOTO   1C8
+0003:  NOP
+.................... #include <IC74LS.h> 
+.................... #include <16F877A.h> 
+.................... //////////// Standard Header file for the PIC16F877A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877A 
+0004:  MOVF   2C,W
+0005:  CLRF   78
+0006:  SUBWF  2B,W
+0007:  BTFSC  03.0
+0008:  GOTO   00C
+0009:  MOVF   2B,W
+000A:  MOVWF  77
+000B:  GOTO   018
+000C:  CLRF   77
+000D:  MOVLW  08
+000E:  MOVWF  2D
+000F:  RLF    2B,F
+0010:  RLF    77,F
+0011:  MOVF   2C,W
+0012:  SUBWF  77,W
+0013:  BTFSC  03.0
+0014:  MOVWF  77
+0015:  RLF    78,F
+0016:  DECFSZ 2D,F
+0017:  GOTO   00F
+0018:  RETURN
+*
+012A:  BSF    0A.0
+012B:  BCF    0A.1
+012C:  BCF    0A.2
+012D:  ADDWF  02,F
+012E:  GOTO   07E
+012F:  GOTO   08F
+0130:  GOTO   0A0
+0131:  GOTO   0B1
+0132:  GOTO   0C2
+0133:  GOTO   0D3
+0134:  GOTO   0E4
+0135:  GOTO   0F5
+0136:  GOTO   106
+0137:  GOTO   117
+*
+0193:  BSF    0A.0
+0194:  BCF    0A.1
+0195:  BCF    0A.2
+0196:  ADDWF  02,F
+0197:  GOTO   13E
+0198:  GOTO   14F
+0199:  GOTO   160
+019A:  GOTO   171
+019B:  GOTO   182
+....................  
+.................... #list 
+....................  
+.................... #device ADC=16 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES NOLVP                 	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=20000000) 
+*
+0064:  MOVLW  2C
+0065:  MOVWF  04
+0066:  BCF    03.7
+0067:  MOVF   00,W
+0068:  BTFSC  03.2
+0069:  GOTO   077
+006A:  MOVLW  06
+006B:  MOVWF  78
+006C:  CLRF   77
+006D:  DECFSZ 77,F
+006E:  GOTO   06D
+006F:  DECFSZ 78,F
+0070:  GOTO   06C
+0071:  MOVLW  7B
+0072:  MOVWF  77
+0073:  DECFSZ 77,F
+0074:  GOTO   073
+0075:  DECFSZ 00,F
+0076:  GOTO   06A
+0077:  RETURN
+....................  
+....................  
+....................  
+.................... #define IN_1 PIN_B0 
+.................... #define IN_2 PIN_B1 
+.................... #define IN_3 PIN_B2 
+.................... #define IN_4 PIN_B3 
+....................  
+.................... #define col_1  PIN_B4 
+.................... #define col_2  PIN_B5 
+.................... #define col_3  PIN_B6 
+.................... #define col_4  PIN_B7 
+....................  
+.................... int8 i; 
+.................... void Quetcot(char number) 
+.................... { 
+....................    switch(number) 
+*
+0138:  MOVF   2D,W
+0139:  ADDLW  FB
+013A:  BTFSC  03.0
+013B:  GOTO   192
+013C:  ADDLW  05
+013D:  GOTO   193
+....................    { 
+....................       case 0: 
+....................       { 
+....................          output_bit(col_1,1); 
+013E:  BSF    06.4
+013F:  BSF    03.5
+0140:  BCF    06.4
+....................          output_bit(col_2,1); 
+0141:  BCF    03.5
+0142:  BSF    06.5
+0143:  BSF    03.5
+0144:  BCF    06.5
+....................          output_bit(col_3,1); 
+0145:  BCF    03.5
+0146:  BSF    06.6
+0147:  BSF    03.5
+0148:  BCF    06.6
+....................          output_bit(col_4,1); 
+0149:  BCF    03.5
+014A:  BSF    06.7
+014B:  BSF    03.5
+014C:  BCF    06.7
+....................          break; 
+014D:  BCF    03.5
+014E:  GOTO   192
+....................       } 
+....................       case 1: 
+....................       { 
+....................          output_bit(col_1,0); 
+014F:  BCF    06.4
+0150:  BSF    03.5
+0151:  BCF    06.4
+....................          output_bit(col_2,1); 
+0152:  BCF    03.5
+0153:  BSF    06.5
+0154:  BSF    03.5
+0155:  BCF    06.5
+....................          output_bit(col_3,1); 
+0156:  BCF    03.5
+0157:  BSF    06.6
+0158:  BSF    03.5
+0159:  BCF    06.6
+....................          output_bit(col_4,1); 
+015A:  BCF    03.5
+015B:  BSF    06.7
+015C:  BSF    03.5
+015D:  BCF    06.7
+....................          break; 
+015E:  BCF    03.5
+015F:  GOTO   192
+....................       } 
+....................       case 2: 
+....................       { 
+....................          output_bit(col_1,1); 
+0160:  BSF    06.4
+0161:  BSF    03.5
+0162:  BCF    06.4
+....................          output_bit(col_2,0); 
+0163:  BCF    03.5
+0164:  BCF    06.5
+0165:  BSF    03.5
+0166:  BCF    06.5
+....................          output_bit(col_3,1); 
+0167:  BCF    03.5
+0168:  BSF    06.6
+0169:  BSF    03.5
+016A:  BCF    06.6
+....................          output_bit(col_4,1); 
+016B:  BCF    03.5
+016C:  BSF    06.7
+016D:  BSF    03.5
+016E:  BCF    06.7
+....................          break; 
+016F:  BCF    03.5
+0170:  GOTO   192
+....................       } 
+....................       case 3: 
+....................       { 
+....................          output_bit(col_1,1); 
+0171:  BSF    06.4
+0172:  BSF    03.5
+0173:  BCF    06.4
+....................          output_bit(col_2,1); 
+0174:  BCF    03.5
+0175:  BSF    06.5
+0176:  BSF    03.5
+0177:  BCF    06.5
+....................          output_bit(col_3,0); 
+0178:  BCF    03.5
+0179:  BCF    06.6
+017A:  BSF    03.5
+017B:  BCF    06.6
+....................          output_bit(col_4,1); 
+017C:  BCF    03.5
+017D:  BSF    06.7
+017E:  BSF    03.5
+017F:  BCF    06.7
+....................          break; 
+0180:  BCF    03.5
+0181:  GOTO   192
+....................       } 
+....................       case 4: 
+....................       { 
+....................          output_bit(col_1,1); 
+0182:  BSF    06.4
+0183:  BSF    03.5
+0184:  BCF    06.4
+....................          output_bit(col_2,1); 
+0185:  BCF    03.5
+0186:  BSF    06.5
+0187:  BSF    03.5
+0188:  BCF    06.5
+....................          output_bit(col_3,1); 
+0189:  BCF    03.5
+018A:  BSF    06.6
+018B:  BSF    03.5
+018C:  BCF    06.6
+....................          output_bit(col_4,0); 
+018D:  BCF    03.5
+018E:  BCF    06.7
+018F:  BSF    03.5
+0190:  BCF    06.7
+....................          break; 
+0191:  BCF    03.5
+....................       } 
+....................    } 
+0192:  RETURN
+.................... } 
+....................  
+....................  
+.................... void NhapData(char Dulieu) 
+.................... { 
+....................    switch(Dulieu) 
+*
+0078:  MOVF   2D,W
+0079:  ADDLW  F6
+007A:  BTFSC  03.0
+007B:  GOTO   127
+007C:  ADDLW  0A
+007D:  GOTO   12A
+....................    { 
+....................       case 0: 
+....................       { 
+....................          output_bit(IN_4,0); 
+007E:  BCF    06.3
+007F:  BSF    03.5
+0080:  BCF    06.3
+....................          output_bit(IN_3,0); 
+0081:  BCF    03.5
+0082:  BCF    06.2
+0083:  BSF    03.5
+0084:  BCF    06.2
+....................          output_bit(IN_2,0); 
+0085:  BCF    03.5
+0086:  BCF    06.1
+0087:  BSF    03.5
+0088:  BCF    06.1
+....................          output_bit(IN_1,0); 
+0089:  BCF    03.5
+008A:  BCF    06.0
+008B:  BSF    03.5
+008C:  BCF    06.0
+....................          break; 
+008D:  BCF    03.5
+008E:  GOTO   127
+....................       } 
+....................       case 1: 
+....................       { 
+....................          output_bit(IN_4,0); 
+008F:  BCF    06.3
+0090:  BSF    03.5
+0091:  BCF    06.3
+....................          output_bit(IN_3,0); 
+0092:  BCF    03.5
+0093:  BCF    06.2
+0094:  BSF    03.5
+0095:  BCF    06.2
+....................          output_bit(IN_2,0); 
+0096:  BCF    03.5
+0097:  BCF    06.1
+0098:  BSF    03.5
+0099:  BCF    06.1
+....................          output_bit(IN_1,1); 
+009A:  BCF    03.5
+009B:  BSF    06.0
+009C:  BSF    03.5
+009D:  BCF    06.0
+....................          break; 
+009E:  BCF    03.5
+009F:  GOTO   127
+....................       } 
+....................       case 2: 
+....................       { 
+....................          output_bit(IN_4,0); 
+00A0:  BCF    06.3
+00A1:  BSF    03.5
+00A2:  BCF    06.3
+....................          output_bit(IN_3,0); 
+00A3:  BCF    03.5
+00A4:  BCF    06.2
+00A5:  BSF    03.5
+00A6:  BCF    06.2
+....................          output_bit(IN_2,1); 
+00A7:  BCF    03.5
+00A8:  BSF    06.1
+00A9:  BSF    03.5
+00AA:  BCF    06.1
+....................          output_bit(IN_1,0); 
+00AB:  BCF    03.5
+00AC:  BCF    06.0
+00AD:  BSF    03.5
+00AE:  BCF    06.0
+....................          break; 
+00AF:  BCF    03.5
+00B0:  GOTO   127
+....................       } 
+....................       case 3: 
+....................       { 
+....................          output_bit(IN_4,0); 
+00B1:  BCF    06.3
+00B2:  BSF    03.5
+00B3:  BCF    06.3
+....................          output_bit(IN_3,0); 
+00B4:  BCF    03.5
+00B5:  BCF    06.2
+00B6:  BSF    03.5
+00B7:  BCF    06.2
+....................          output_bit(IN_2,1); 
+00B8:  BCF    03.5
+00B9:  BSF    06.1
+00BA:  BSF    03.5
+00BB:  BCF    06.1
+....................          output_bit(IN_1,1); 
+00BC:  BCF    03.5
+00BD:  BSF    06.0
+00BE:  BSF    03.5
+00BF:  BCF    06.0
+....................          break; 
+00C0:  BCF    03.5
+00C1:  GOTO   127
+....................       } 
+....................       case 4: 
+....................       { 
+....................          output_bit(IN_4,0); 
+00C2:  BCF    06.3
+00C3:  BSF    03.5
+00C4:  BCF    06.3
+....................          output_bit(IN_3,2); 
+00C5:  BCF    03.5
+00C6:  BSF    06.2
+00C7:  BSF    03.5
+00C8:  BCF    06.2
+....................          output_bit(IN_2,0); 
+00C9:  BCF    03.5
+00CA:  BCF    06.1
+00CB:  BSF    03.5
+00CC:  BCF    06.1
+....................          output_bit(IN_1,0); 
+00CD:  BCF    03.5
+00CE:  BCF    06.0
+00CF:  BSF    03.5
+00D0:  BCF    06.0
+....................          break; 
+00D1:  BCF    03.5
+00D2:  GOTO   127
+....................       } 
+....................       case 5: 
+....................       { 
+....................          output_bit(IN_4,0); 
+00D3:  BCF    06.3
+00D4:  BSF    03.5
+00D5:  BCF    06.3
+....................          output_bit(IN_3,1); 
+00D6:  BCF    03.5
+00D7:  BSF    06.2
+00D8:  BSF    03.5
+00D9:  BCF    06.2
+....................          output_bit(IN_2,0); 
+00DA:  BCF    03.5
+00DB:  BCF    06.1
+00DC:  BSF    03.5
+00DD:  BCF    06.1
+....................          output_bit(IN_1,1); 
+00DE:  BCF    03.5
+00DF:  BSF    06.0
+00E0:  BSF    03.5
+00E1:  BCF    06.0
+....................          break; 
+00E2:  BCF    03.5
+00E3:  GOTO   127
+....................       } 
+....................       case 6: 
+....................       { 
+....................          output_bit(IN_4,0); 
+00E4:  BCF    06.3
+00E5:  BSF    03.5
+00E6:  BCF    06.3
+....................          output_bit(IN_3,1); 
+00E7:  BCF    03.5
+00E8:  BSF    06.2
+00E9:  BSF    03.5
+00EA:  BCF    06.2
+....................          output_bit(IN_2,1); 
+00EB:  BCF    03.5
+00EC:  BSF    06.1
+00ED:  BSF    03.5
+00EE:  BCF    06.1
+....................          output_bit(IN_1,0); 
+00EF:  BCF    03.5
+00F0:  BCF    06.0
+00F1:  BSF    03.5
+00F2:  BCF    06.0
+....................          break; 
+00F3:  BCF    03.5
+00F4:  GOTO   127
+....................       } 
+....................       case 7: 
+....................       { 
+....................          output_bit(IN_4,0); 
+00F5:  BCF    06.3
+00F6:  BSF    03.5
+00F7:  BCF    06.3
+....................          output_bit(IN_3,1); 
+00F8:  BCF    03.5
+00F9:  BSF    06.2
+00FA:  BSF    03.5
+00FB:  BCF    06.2
+....................          output_bit(IN_2,1); 
+00FC:  BCF    03.5
+00FD:  BSF    06.1
+00FE:  BSF    03.5
+00FF:  BCF    06.1
+....................          output_bit(IN_1,1); 
+0100:  BCF    03.5
+0101:  BSF    06.0
+0102:  BSF    03.5
+0103:  BCF    06.0
+....................          break; 
+0104:  BCF    03.5
+0105:  GOTO   127
+....................       } 
+....................       case 8: 
+....................       { 
+....................          output_bit(IN_4,1); 
+0106:  BSF    06.3
+0107:  BSF    03.5
+0108:  BCF    06.3
+....................          output_bit(IN_3,0); 
+0109:  BCF    03.5
+010A:  BCF    06.2
+010B:  BSF    03.5
+010C:  BCF    06.2
+....................          output_bit(IN_2,0); 
+010D:  BCF    03.5
+010E:  BCF    06.1
+010F:  BSF    03.5
+0110:  BCF    06.1
+....................          output_bit(IN_1,0); 
+0111:  BCF    03.5
+0112:  BCF    06.0
+0113:  BSF    03.5
+0114:  BCF    06.0
+....................          break; 
+0115:  BCF    03.5
+0116:  GOTO   127
+....................       } 
+....................       case 9: 
+....................       { 
+....................          output_bit(IN_4,1); 
+0117:  BSF    06.3
+0118:  BSF    03.5
+0119:  BCF    06.3
+....................          output_bit(IN_3,0); 
+011A:  BCF    03.5
+011B:  BCF    06.2
+011C:  BSF    03.5
+011D:  BCF    06.2
+....................          output_bit(IN_2,0); 
+011E:  BCF    03.5
+011F:  BCF    06.1
+0120:  BSF    03.5
+0121:  BCF    06.1
+....................          output_bit(IN_1,1); 
+0122:  BCF    03.5
+0123:  BSF    06.0
+0124:  BSF    03.5
+0125:  BCF    06.0
+....................          break; 
+0126:  BCF    03.5
+....................       } 
+....................    } 
+0127:  BCF    0A.3
+0128:  BCF    0A.4
+0129:  GOTO   1B8 (RETURN)
+.................... } 
+....................  
+.................... void Tachso(int8 So, char Data[]) 
+.................... { 
+....................    Data[3] = So%10; 
+*
+0019:  MOVLW  03
+001A:  ADDWF  27,W
+001B:  MOVWF  04
+001C:  BCF    03.7
+001D:  BTFSC  28.0
+001E:  BSF    03.7
+001F:  MOVF   26,W
+0020:  MOVWF  2B
+0021:  MOVLW  0A
+0022:  MOVWF  2C
+0023:  CALL   004
+0024:  MOVF   77,W
+0025:  MOVWF  00
+....................    So = So/10; 
+0026:  MOVF   26,W
+0027:  MOVWF  2B
+0028:  MOVLW  0A
+0029:  MOVWF  2C
+002A:  CALL   004
+002B:  MOVF   78,W
+002C:  MOVWF  26
+....................     
+....................    Data[2] = So%10; 
+002D:  MOVLW  02
+002E:  ADDWF  27,W
+002F:  MOVWF  04
+0030:  BCF    03.7
+0031:  BTFSC  28.0
+0032:  BSF    03.7
+0033:  MOVF   26,W
+0034:  MOVWF  2B
+0035:  MOVLW  0A
+0036:  MOVWF  2C
+0037:  CALL   004
+0038:  MOVF   77,W
+0039:  MOVWF  00
+....................    So = So/10; 
+003A:  MOVF   26,W
+003B:  MOVWF  2B
+003C:  MOVLW  0A
+003D:  MOVWF  2C
+003E:  CALL   004
+003F:  MOVF   78,W
+0040:  MOVWF  26
+....................     
+....................    Data[1] = So%10; 
+0041:  MOVLW  01
+0042:  ADDWF  27,W
+0043:  MOVWF  04
+0044:  BCF    03.7
+0045:  BTFSC  28.0
+0046:  BSF    03.7
+0047:  MOVF   26,W
+0048:  MOVWF  2B
+0049:  MOVLW  0A
+004A:  MOVWF  2C
+004B:  CALL   004
+004C:  MOVF   77,W
+004D:  MOVWF  00
+....................    So = So/10; 
+004E:  MOVF   26,W
+004F:  MOVWF  2B
+0050:  MOVLW  0A
+0051:  MOVWF  2C
+0052:  CALL   004
+0053:  MOVF   78,W
+0054:  MOVWF  26
+....................     
+....................    Data[0] = So%10; 
+0055:  MOVF   27,W
+0056:  MOVWF  04
+0057:  BCF    03.7
+0058:  BTFSC  28.0
+0059:  BSF    03.7
+005A:  MOVF   26,W
+005B:  MOVWF  2B
+005C:  MOVLW  0A
+005D:  MOVWF  2C
+005E:  CALL   004
+005F:  MOVF   77,W
+0060:  MOVWF  00
+0061:  BCF    0A.3
+0062:  BCF    0A.4
+0063:  GOTO   1E3 (RETURN)
+.................... } 
+....................  
+.................... void Quetled(char Data[]) 
+.................... { 
+.................... char i; 
+....................    for(i=0;i<4;i++) 
+*
+01A9:  CLRF   2B
+01AA:  MOVF   2B,W
+01AB:  SUBLW  03
+01AC:  BTFSS  03.0
+01AD:  GOTO   1C4
+....................    { 
+....................       NhapData(Data[i]); 
+01AE:  MOVF   2B,W
+01AF:  ADDWF  29,W
+01B0:  MOVWF  04
+01B1:  BCF    03.7
+01B2:  BTFSC  2A.0
+01B3:  BSF    03.7
+01B4:  MOVF   00,W
+01B5:  MOVWF  2C
+01B6:  MOVWF  2D
+01B7:  GOTO   078
+....................       Quetcot(i+1); 
+01B8:  MOVLW  01
+01B9:  ADDWF  2B,W
+01BA:  MOVWF  2C
+01BB:  MOVWF  2D
+01BC:  CALL   138
+....................       delay_ms(2); 
+01BD:  MOVLW  02
+01BE:  MOVWF  2C
+01BF:  CALL   064
+....................       Quetcot(0); 
+01C0:  CLRF   2D
+01C1:  CALL   138
+01C2:  INCF   2B,F
+01C3:  GOTO   1AA
+....................    } 
+.................... } 
+....................  
+.................... void Hienthi(char Data[],int time) 
+.................... { 
+....................    while(time>1) 
+*
+019C:  MOVF   28,W
+019D:  SUBLW  01
+019E:  BTFSC  03.0
+019F:  GOTO   1C5
+....................    { 
+....................       time=time-1; 
+01A0:  MOVLW  01
+01A1:  SUBWF  28,F
+....................       delay_ms(10); 
+01A2:  MOVLW  0A
+01A3:  MOVWF  2C
+01A4:  CALL   064
+....................       Quetled(Data); 
+01A5:  MOVF   27,W
+01A6:  MOVWF  2A
+01A7:  MOVF   26,W
+01A8:  MOVWF  29
+*
+01C4:  GOTO   19C
+....................    } 
+01C5:  BCF    0A.3
+01C6:  BCF    0A.4
+01C7:  GOTO   1E9 (RETURN)
+.................... } 
+.................... void main() 
+01C8:  MOVF   03,W
+01C9:  ANDLW  1F
+01CA:  MOVWF  03
+01CB:  BSF    03.5
+01CC:  BSF    1F.0
+01CD:  BSF    1F.1
+01CE:  BSF    1F.2
+01CF:  BCF    1F.3
+01D0:  MOVLW  07
+01D1:  MOVWF  1C
+01D2:  BCF    03.7
+.................... { 
+.................... int i; 
+.................... char Data[4]={1,2,3,4}; 
+01D3:  MOVLW  01
+01D4:  BCF    03.5
+01D5:  MOVWF  22
+01D6:  MOVLW  02
+01D7:  MOVWF  23
+01D8:  MOVLW  03
+01D9:  MOVWF  24
+01DA:  MOVLW  04
+01DB:  MOVWF  25
+....................    while(TRUE) 
+....................    { 
+....................          for(i=0;i<10000;i++) 
+01DC:  CLRF   21
+....................          { 
+....................             Tachso(i,Data); 
+01DD:  MOVF   21,W
+01DE:  MOVWF  26
+01DF:  CLRF   28
+01E0:  MOVLW  22
+01E1:  MOVWF  27
+01E2:  GOTO   019
+....................             Hienthi(Data,10); 
+01E3:  CLRF   27
+01E4:  MOVLW  22
+01E5:  MOVWF  26
+01E6:  MOVLW  0A
+01E7:  MOVWF  28
+01E8:  GOTO   19C
+01E9:  INCF   21,F
+01EA:  GOTO   1DD
+....................          } 
+01EB:  GOTO   1DC
+....................    } 
+....................  
+.................... } 
+01EC:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F32   HS NOWDT PUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT
